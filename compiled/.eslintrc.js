@@ -1,0 +1,11 @@
+/**
+ * These rules enforce the Hack Reactor Style Guide
+ *
+ * Visit this repo for more information:
+ *   https://github.com/reactorcore/eslint-config-hackreactor
+ */
+
+module.exports = {
+  extends: './node_modules/eslint-config-hackreactor/index.js'
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy5lc2xpbnRyYy5qcyJdLCJuYW1lcyI6WyJtb2R1bGUiLCJleHBvcnRzIiwiZXh0ZW5kcyJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7QUFPQUEsT0FBT0MsT0FBUCxHQUFpQjtBQUNmQyxXQUFTO0FBRE0sQ0FBakIiLCJmaWxlIjoiLmVzbGludHJjLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXHJcbiAqIFRoZXNlIHJ1bGVzIGVuZm9yY2UgdGhlIEhhY2sgUmVhY3RvciBTdHlsZSBHdWlkZVxyXG4gKlxyXG4gKiBWaXNpdCB0aGlzIHJlcG8gZm9yIG1vcmUgaW5mb3JtYXRpb246XHJcbiAqICAgaHR0cHM6Ly9naXRodWIuY29tL3JlYWN0b3Jjb3JlL2VzbGludC1jb25maWctaGFja3JlYWN0b3JcclxuICovXHJcblxyXG5tb2R1bGUuZXhwb3J0cyA9IHtcclxuICBleHRlbmRzOiAnLi9ub2RlX21vZHVsZXMvZXNsaW50LWNvbmZpZy1oYWNrcmVhY3Rvci9pbmRleC5qcydcclxufTtcclxuIl19
