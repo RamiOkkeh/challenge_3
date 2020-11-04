@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
-const { send } = require('process');
+// const { send } = require('process');
+const db = require('./public/database/index');
 let app = express();
 
 app.use(express.static(__dirname + '/public'));
@@ -8,12 +9,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get(__dirname + '/client/app.jsx', (req, res) => {
-  res.send('ppppp');
-});
-
 app.post('/checkout', (req, res) => {
-  res.json(req.body);
+  db.save(req.body, (err, data) => {
+    if (err) { res.status(500); } else { res.status(201); res.send('your puchase has been completed'); }
+  });
 });
 
 

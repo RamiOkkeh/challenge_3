@@ -2,26 +2,37 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/orders');
 
 let orderSchema = mongoose.Schema({
-//   id: Number,
-//   name: String,
-//   username: String,
-//   repo: {
-//     type: String,
-//     unique: true
-//   },
-//   forks: Number
+  name: String,
+  email: String,
+  pass: String,
+  add1: String,
+  add2: String,
+  city: String,
+  state: String,
+  zipcode: Number,
+  phone: Number,
+  creditnum: Number,
+  exp: String,
+  zip: Number
 });
 
 let Order = mongoose.model('Order', orderSchema);
 
 let save = (order, callback) => {
-//   Repo.create({
-//     id: repo.id,
-//     name: repo.name,
-//     username: repo.owner.login,
-//     repo: repo.svn_url,
-//     forks: repo.forks
-//   }, callback);
+  Order.create({
+    name: order.name,
+    email: order.email,
+    pass: order.pass,
+    add1: order.address1,
+    add2: order.address2,
+    city: order.city,
+    state: order.state,
+    zipcode: order.zipCode,
+    phone: order.phone,
+    creditnum: order.creditNum,
+    exp: order.expDate,
+    zip: order.zip
+  }, callback);
 };
 
 module.exports.save = save;

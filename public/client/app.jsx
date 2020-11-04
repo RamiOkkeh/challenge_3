@@ -2,6 +2,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.rerender = this.rerender.bind(this);
+    this.submit = this.submit.bind(this);
     this.state = {
       0: 'show',
       1: 'hide',
@@ -11,18 +12,34 @@ class App extends React.Component {
     this.i = 0;
   }
   
-  //   componentDidMount() {
-  //     this.rerender();
-  //   }
   rerender() {
-    console.log('lol');
-    // document.getElementById('main').innerHTML = this.state[this.i];
     var i = this.i;
     this.setState({
       [i]: 'hide',
       [i + 1]: 'show'
     });
     this.i++;
+  }
+  submit(e) {
+    this.i = 0;
+    this.setState({
+      0: 'show',
+      3: 'hide'
+    });
+    e.preventDefault();
+    var dataArr = $('input');
+    var data = {};
+    for (var i = 0; i < dataArr.length; i++) {
+      data[dataArr[i].name] = dataArr[i].value;
+    }
+    $.ajax({
+      url: 'http://127.0.0.1:3002/checkout',
+      method: 'POST',
+      contentType: 'application/json',
+      json: data,
+      success: (reply) => { console.log('data: ', reply); $('#results').html(`<pre>${reply}</pre>`); },
+      error: (err) => console.log('err: ', err)
+    });
   }
   render() {
     //   var that = this;
@@ -67,18 +84,22 @@ class App extends React.Component {
           <br class={this.state[2]}/>
           <input class={this.state[2]} type="text" name="state" />
           <br class={this.state[2]} />  
-          <label class={this.state[2]} for="zip code">Zip code:</label>
+          <label class={this.state[2]} for="zipCode">Zip code:</label>
           <br class={this.state[2]}/>
-          <input class={this.state[2]} type="text" name="zip code" />
+          <input class={this.state[2]} type="text" name="zipCode" />
+          <br class={this.state[2]} />  
+          <label class={this.state[2]} for="phone">Phone Number:</label>
+          <br class={this.state[2]}/>
+          <input class={this.state[2]} type="text" name="phone" />
           <br class={this.state[2]}/>  
           <input type="button" name="form2" class={this.state[2]} onClick={this.rerender} value="Next" />
                 
 
           {/* form 3 */}
           <h3 class={this.state[3]}>Select Your Shipping Distination</h3>
-          <label class={this.state[3]} for="creditCard">Credit card:</label>
+          <label class={this.state[3]} for="creditNum">Credit card:</label>
           <br class={this.state[3]}/>
-          <input class={this.state[3]} type="text" name="creditCard" />
+          <input class={this.state[3]} type="text" name="creditNum" />
           <br class={this.state[3]} /> 
           <label class={this.state[3]} for="expDate">Experation Date:</label>
           <br class={this.state[3]}/>
@@ -88,8 +109,10 @@ class App extends React.Component {
           <br class={this.state[3]}/>
           <input class={this.state[3]} type="text" name="zip" />
           <br class={this.state[3]} /> 
-          <input type="submit" name="form3" class={this.state[3]} onClick={this.rerender} value="Complete Purchase" />
+          <input type="submit" name="form3" class={this.state[3]} onClick={this.submit} value="Complete Purchase" />
         </form>
+            
+        <div id="results"></div>
       </div>
     );
   }
