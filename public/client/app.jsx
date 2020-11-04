@@ -54,13 +54,13 @@ class App extends React.Component {
       success: (reply) => {
         console.log('data: ', reply);
         var str = '';
-        for (let i = 0; i < reply.length; i++) {
-          const elem = reply[i];
-          for (var key in elem) {
-            str += key + ': ';
-            str += elem[key] + '\n';
-          }
+        // for (let i = 0; i < reply.length; i++) {
+        const elem = reply[reply.length - 1];
+        for (var key in elem) {
+          str += key + ': ';
+          str += elem[key] + '\n';
         }
+        // }
         $('#results2').html(`<pre>${str}</pre>`);
       },
       error: (err) => console.log('err: ', err)
