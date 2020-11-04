@@ -10,8 +10,15 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.post('/checkout', (req, res) => {
+  // res.send(req.body);
   db.save(req.body, (err, data) => {
     if (err) { res.status(500); } else { res.status(201); res.send('your puchase has been completed'); }
+  });
+});
+
+app.get('/checkout', (req, res) => {
+  db.find((err, data) => {
+    if (err) { res.status(500); } else { console.log(data); res.json(data); }
   });
 });
 

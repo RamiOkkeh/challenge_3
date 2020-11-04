@@ -35,4 +35,15 @@ let save = (order, callback) => {
   }, callback);
 };
 
+let find = (callback) => {
+  Order.find((err, repos) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, repos);
+    }
+  });
+};
+
 module.exports.save = save;
+module.exports.find = find;
