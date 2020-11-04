@@ -4,6 +4,9 @@
         "watch": "babel . --out-dir compiled --presets=react --ignore=node_modules,compiled --source-maps inline --watch",
         "build": "react-scripts build"
     },
+    "engines": {
+        "node": ">=4.0.0"
+    },
     "proxy": "http//localhost/3002",
     "name": "challenge_3",
     "version": "1.0.0",
